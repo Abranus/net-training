@@ -55,7 +55,7 @@ namespace EnumerableTask
         /// </example>
         public IEnumerable<long> GetSquareSequence(IEnumerable<int> data)
         {
-            return data.Select(x => (long)x *x);
+            return data.Select(x => (long)x * x);
         }
 
         /// <summary>Transforms int sequence to its moving sum sequence, 
@@ -203,8 +203,7 @@ namespace EnumerableTask
         /// </example>
         public int GetCountOfGreaterThen10(IEnumerable<int> data)
         {
-            // TODO : Implement GetCountOfGreaterThen10
-            throw new NotImplementedException();
+            return data.Count(x => x > 10);
         }
 
 
@@ -521,8 +520,7 @@ namespace EnumerableTask
         /// </example>
         public IEnumerable<int> GetFirstNegativeSubsequence(IEnumerable<int> data)
         {
-            // TODO : Implement GetFirstNegativeSubsequence
-            throw new NotImplementedException();
+            return data.SkipWhile(x => x >= 0).TakeWhile(x => x < 0);
         }
 
 
