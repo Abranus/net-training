@@ -76,7 +76,7 @@ namespace EnumerableTask
         public IEnumerable<long> GetMovingSumSequence(IEnumerable<int> data)
         {
             var tmp = 0;
-            return data.Select(x =>(long)(tmp=tmp+x));
+            return data.Select(x => (long)(tmp = tmp + x));
         }
 
 
@@ -168,8 +168,20 @@ namespace EnumerableTask
         /// </example>
         public string GetStringOfSequence<T>(IEnumerable<T> data)
         {
-            // TODO : Implement GetStringOfSequence
-            throw new NotImplementedException();
+            string str = "";
+            foreach(var x in data)
+            {
+                if (x != null)
+                {
+                    str += x.ToString();
+                }
+                else
+                {
+                    str += "null";
+                }
+                str += ",";
+            }
+            return str;
         }
 
         /// <summary> Finds the 3 largest numbers from a sequence</summary>
@@ -186,8 +198,7 @@ namespace EnumerableTask
         /// </example>
         public IEnumerable<int> Get3TopItems(IEnumerable<int> data)
         {
-            // TODO : Implement Get3TopItems
-            throw new NotImplementedException();
+            return data.OrderByDescending(x => x).Take(3);
         }
 
         /// <summary> Calculates the count of numbers that are greater then 10</summary>
@@ -236,8 +247,8 @@ namespace EnumerableTask
         /// </example>
         public int GetCountOfStringsWithLengthEqualsTo3(IEnumerable<string> data)
         {
-            // TODO : Implement GetCountOfStringsWithLengthEqualsTo3
-            throw new NotImplementedException();
+            //return data.Where(x => x.Length == 3).Distinct().Count();
+            return data.Distinct().Count(x => x?.Length == 3);
         }
 
         /// <summary> Counts the number of each strings in sequence </summary>
@@ -271,8 +282,10 @@ namespace EnumerableTask
         /// </example>
         public int GetCountOfStringsWithMaxLength(IEnumerable<string> data)
         {
-            // TODO : Implement GetCountOfStringsWithMaxLength
-            throw new NotImplementedException();
+            int len;
+            data.OrderByDescending(x => x.Length);
+            len = data.First().Length;
+            return data.TakeWhile(x => x.Length == len).Count();
         }
 
 
