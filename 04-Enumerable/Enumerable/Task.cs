@@ -247,7 +247,6 @@ namespace EnumerableTask
         /// </example>
         public int GetCountOfStringsWithLengthEqualsTo3(IEnumerable<string> data)
         {
-            //return data.Where(x => x.Length == 3).Distinct().Count();
             return data.Distinct().Count(x => x?.Length == 3);
         }
 
@@ -282,10 +281,10 @@ namespace EnumerableTask
         /// </example>
         public int GetCountOfStringsWithMaxLength(IEnumerable<string> data)
         {
-            int len;
-            data.OrderByDescending(x => x.Length);
-            len = data.First().Length;
-            return data.TakeWhile(x => x.Length == len).Count();
+            return data
+                .OrderByDescending(x => x.Length)
+                .TakeWhile(x => x.Length == data.First().Length)
+                .Count();
         }
 
 
@@ -305,8 +304,7 @@ namespace EnumerableTask
         /// </example>
         public int GetDigitCharsCount(string data)
         {
-            // TODO : Implement GetDigitCharsCount
-            throw new NotImplementedException();
+            return data.Count(x => char.IsDigit(x));
         }
 
 
