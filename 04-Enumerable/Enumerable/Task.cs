@@ -169,7 +169,7 @@ namespace EnumerableTask
         public string GetStringOfSequence<T>(IEnumerable<T> data)
         {
             string str = "";
-            foreach(var x in data)
+            foreach (var x in data)
             {
                 if (x != null)
                 {
@@ -351,7 +351,11 @@ namespace EnumerableTask
         /// </example>
         public IEnumerable<string> SortStringsByLengthAndAlphabet(IEnumerable<string> data)
         {
-            // TODO : Implement SortStringsByLengthAndAlphabet
+            //data.orderby(x => x.length).orderby(x=>
+            //{
+
+            //})
+            // TODO : Implement GetQuarterSales
             throw new NotImplementedException();
         }
 
@@ -367,7 +371,18 @@ namespace EnumerableTask
         /// </example>
         public IEnumerable<char> GetMissingDigits(IEnumerable<string> data)
         {
-            // TODO : Implement GetMissingDigits
+            //List<char> coll;
+            //foreach(var str in data)
+            //{
+            //    foreach(var ch in str)
+            //    {
+            //        if(Char.IsDigit(ch))
+            //        {
+            //            coll.Add(ch);
+            //        }
+            //    }
+            //}
+            // TODO : Implement GetQuarterSales
             throw new NotImplementedException();
         }
 
@@ -405,8 +420,8 @@ namespace EnumerableTask
         /// </example>
         public IEnumerable<string> CombineNumbersAndFruits(IEnumerable<string> numbers, IEnumerable<string> fruits)
         {
-            // TODO : Implement CombinesNumbersAndFruits
-            throw new NotImplementedException();
+            return numbers.Zip(fruits,
+                (x, y) => x + " " + y);
         }
 
 
@@ -440,7 +455,7 @@ namespace EnumerableTask
         /// </example>
         public int GetSumOfAllInts(object[] data)
         {
-            // TODO : Implement GetSumOfAllInts
+            // TODO : Implement GetCommonChars
             throw new NotImplementedException();
         }
 
@@ -477,8 +492,14 @@ namespace EnumerableTask
         /// </example>
         public int GetTotalStringsLength(IEnumerable<string> data)
         {
-            // TODO : Implement GetTotalStringsLength
-            throw new NotImplementedException();
+            int totalLength = 0;
+            //foreach (var str in data)
+            //{
+            //    totalLength += str.Length;
+            //}
+            //return totalLength;
+            data.Select(x => totalLength += x.Length);
+            return totalLength;
         }
 
         /// <summary> Determines whether sequence has null elements</summary>
@@ -495,8 +516,9 @@ namespace EnumerableTask
         /// </example>
         public bool IsSequenceHasNulls(IEnumerable<string> data)
         {
-            // TODO : Implement IsSequenceHasNulls
-            throw new NotImplementedException();
+            if (data.Count() != data.Count(x => x != null))
+                return true;
+            return false;
         }
 
         /// <summary> Determines whether all strings in sequence are uppercase</summary>
