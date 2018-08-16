@@ -534,7 +534,14 @@ namespace EnumerableTask
         /// </example>
         public bool IsAllStringsAreUppercase(IEnumerable<string> data)
         {
-            // TODO : Implement IsAllStringsAreUppercase
+            //foreach(var str in data)
+            //{
+            //    if(str == str.toupper())
+            //    {
+                    
+            //    }
+            //}
+            // TODO : Implement GetStringsOnly
             throw new NotImplementedException();
         }
 
@@ -653,6 +660,18 @@ namespace EnumerableTask
         /// </example>
         public IEnumerable<string> GetAllPairs(IEnumerable<string> boys, IEnumerable<string> girls)
         {
+            List<string> bg = new List<string>();
+            string str = "";
+            foreach(var boy in boys)
+            {
+                foreach(var girl in girls)
+                {
+                    str = boy + "+" + girl;
+                    bg.Add(str);
+                }
+            }
+            return bg;
+
             // TODO : Implement GetAllPairs
             throw new NotImplementedException();
         }
@@ -673,6 +692,8 @@ namespace EnumerableTask
         /// </example>
         public double GetAverageOfDoubleValues(IEnumerable<object> data)
         {
+            //return (double)data.ToList().Where(x => char.IsDigit((char)Convert.ChangeType(x, typeof(char)))).Average();
+            
             // TODO : Implement GetAverageOfDoubleValues
             throw new NotImplementedException();
         }
