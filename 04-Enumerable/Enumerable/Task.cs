@@ -619,6 +619,12 @@ namespace EnumerableTask
         /// </example>
         public IEnumerable<int> GetSumOfVectors(IEnumerable<int> vector1, IEnumerable<int> vector2)
         {
+            return vector1.Zip(vector2,
+                (val1, val2) =>
+                {
+                    return val1 + val2;
+                });
+
             // TODO : Implement GetSumOfVectors
             throw new NotImplementedException();
         }
@@ -639,6 +645,15 @@ namespace EnumerableTask
         /// </example>
         public int GetProductOfVectors(IEnumerable<int> vector1, IEnumerable<int> vector2)
         {
+            /*int sumOfProduct = 0;
+            vector1.Zip(vector2,
+                (val1, val2) =>
+                {
+                    return sumOfProduct += val1 * val2;
+                });
+
+            return sumOfProduct;*/
+
             // TODO : Implement GetProductOfVectors
             throw new NotImplementedException();
         }
@@ -660,6 +675,7 @@ namespace EnumerableTask
         /// </example>
         public IEnumerable<string> GetAllPairs(IEnumerable<string> boys, IEnumerable<string> girls)
         {
+            //nolinq
             List<string> bg = new List<string>();
             string str = "";
             foreach(var boy in boys)
